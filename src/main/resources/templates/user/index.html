@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/navigation.html" xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Hirable</title>
+</head>
+<body>
+<div layout:fragment="page_header">
+    <h1 class="page-title">List CVs</h1>
+</div>
+
+<div layout:fragment="page_content">
+    <div class="col-xlg-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div th:substituteby="index::logout"></div>
+                <p><a href="/index" th:href="@{/index}">Back to home page</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

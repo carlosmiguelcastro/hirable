@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/base" th:with="bodyClass='page-login-v3 layout-full', header='Info'">
+<head>
+    <th:block layout:fragmet="styles">
+        <link rel="stylesheet" th:href="@{/assets/examples/css/pages/login-v3.css}" />
+    </th:block>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <!-- Page -->
+        <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
+             data-animsition-out="fade-out">
+            <div class="page-content vertical-align-middle">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="brand">
+                            <img class="brand-img" src="../static/assets/images/logo-tvg-login.svg"
+                                 th:src="@{/assets/images/logo-tvg-login.svg}"/>
+                            <h2 class="brand-text font-size-18">Hirable Login</h2>
+                        </div>
+                        <form id="loginForm" name="f" th:action="@{/login}" method="post">
+                            <div th:if="${param.error}" class="alert alert-danger">
+                                Invalid username or password.
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-success">
+                                You have been logged out.
+                            </div>
+                            <div class="form-group form-material floating">
+                                <input type="text" class="form-control" name="username"/>
+                                <label class="floating-label">Username</label>
+                            </div>
+                            <div class="form-group form-material floating">
+                                <input type="password" class="form-control" name="password"/>
+                                <label class="floating-label">Password</label>
+                            </div>
+                            <div class="margin-top-30">
+                                <div class="alert alert-warning margin-button-15 hidden" id="browserAlert" >
+                                    We recommend you use Chrome or Firefox for a better experience.
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <th:block layout:fragment="scripts">
+        <script th:src="@{/assets/vendor/jquery-placeholder/jquery.placeholder.js}"></script>
+        <script th:src="@{/assets/js/components/jquery-placeholder.js}"></script>
+        <script th:src="@{/assets/js/components/material.js}"></script>
+        <script th:src="@{/assets/vendor/jquery-browser-plugin/jquery.browser.js}"></script>
+        <script>
+            // disable login button after first click
+            $('#loginForm').one('submit', function() {
+                $(this).find('button[type="submit"]').attr('disabled','disabled');
+            });
+
+            if (!($.browser.mozilla || $.browser.chrome)) {
+                $('#browserAlert').removeClass('hidden');
+            }
+        </script>
+    </th:block>
+</body>
+</html>

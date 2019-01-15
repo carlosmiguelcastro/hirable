@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Hirable</title>
+
+    <link rel="apple-touch-icon" th:href="@{/assets/images/apple-touch-icon.png}" />
+    <link rel="shortcut icon" th:href="@{/assets/images/favicon.ico}" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap-extend.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/site.css}" />
+    <style>
+        .table-ctEntries > tbody > tr > td {
+            vertical-align: middle !important;
+        }
+
+        .table-ctEntries a:link {
+            text-decoration: none !important;
+        }
+
+        .table-ctEntries .fixed-size-btn {
+            width: 6.7em;
+        }
+
+        .dataTables_filter {
+            text-align: right;
+        }
+
+        .dataTables_filter input {
+            margin-left: 5px;
+        }
+    </style>
+
+    <!-- Plugins -->
+    <link rel="stylesheet" th:href="@{/assets/vendor/animsition/animsition.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/asscrollable/asScrollable.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/switchery/switchery.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/intro-js/introjs.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/slidepanel/slidePanel.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/flag-icon-css/flag-icon.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/toastr/toastr.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/alertify-js/alertify.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/dropify/dropify.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/jt-timepicker/jquery-timepicker.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/jt-timepicker/jquery-timepicker.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css}"/>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" th:href="@{/assets/vendor/web-icons/web-icons.css}" />
+    <link rel="stylesheet" th:href="@{/assets/vendor/brand-icons/brand-icons.css}" />
+    <link rel="stylesheet" th:href="@{/assets/vendor/mfglabs/mfglabs.css}" />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic' />
+
+    <th:block layout:fragment="styles"></th:block>
+
+    <!-- Scripts -->
+    <script th:src="@{/assets/vendor/modernizr/modernizr.js}"></script>
+    <script th:src="@{/assets/vendor/breakpoints/breakpoints.js}"></script>
+    <script>
+        Breakpoints();
+    </script>
+</head>
+<body th:class="${bodyClass}">
+
+    <th:block layout:fragment="content"></th:block>
+
+    <!-- Plugins  -->
+    <script th:src="@{/assets/vendor/jquery/jquery.js}"></script>
+    <script th:src="@{/assets/vendor/bootstrap/bootstrap.js}"></script>
+    <script th:src="@{/assets/vendor/animsition/animsition.js}"></script>
+    <script th:src="@{/assets/vendor/asscroll/jquery-asScroll.js}"></script>
+    <script th:src="@{/assets/vendor/mousewheel/jquery.mousewheel.js}"></script>
+    <script th:src="@{/assets/vendor/asscrollable/jquery.asScrollable.all.js}"></script>
+    <script th:src="@{/assets/vendor/ashoverscroll/jquery-asHoverScroll.js}"></script>
+    <script th:src="@{/assets/vendor/switchery/switchery.min.js}"></script>
+    <script th:src="@{/assets/vendor/intro-js/intro.js}"></script>
+    <script th:src="@{/assets/vendor/slidepanel/jquery-slidePanel.js}"></script>
+    <script th:src="@{/assets/vendor/matchheight/jquery.matchHeight-min.js}"></script>
+    <script th:src="@{/assets/vendor/moment/moment.js}"></script>
+    <script th:src="@{/assets/vendor/toastr/toastr.js}"></script>
+    <script th:src="@{/assets/vendor/alertify-js/alertify.js}"></script>
+    <script th:src="@{/assets/vendor/dropify/dropify.min.js}"></script>
+    <script th:src="@{/assets/vendor/jt-timepicker/jquery.timepicker.min.js}"></script>
+    <script th:src="@{/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js}"></script>
+
+    <!-- Scripts -->
+    <script th:src="@{/assets/js/core.js}"></script>
+    <script th:src="@{/assets/js/site.js}"></script>
+    <script th:src="@{/assets/js/sections/menu.js}"></script>
+    <script th:src="@{/assets/js/sections/menubar.js}"></script>
+    <script th:src="@{/assets/js/sections/gridmenu.js}"></script>
+    <script th:src="@{/assets/js/sections/sidebar.js}"></script>
+    <script th:src="@{/assets/js/configs/config-colors.js}"></script>
+    <script th:src="@{/assets/js/configs/config-tour.js}"></script>
+    <script th:src="@{/assets/js/components/asscrollable.js}"></script>
+    <script th:src="@{/assets/js/components/animsition.js}"></script>
+    <script th:src="@{/assets/js/components/slidepanel.js}"></script>
+    <script th:src="@{/assets/js/components/switchery.js}"></script>
+    <script th:src="@{/assets/js/components/matchheight.js}"></script>
+    <script th:src="@{/assets/js/components/toastr.js}"></script>
+    <script th:src="@{/assets/js/components/alertify-js.js}"></script>
+    <script th:src="@{/assets/js/components/toastr.js}"></script>
+    <script th:src="@{/assets/js/components/jt-timepicker.js}"></script>
+    <script th:src="@{/assets/js/components/bootstrap-datepicker.js}"></script>
+
+    <script th:src="@{/js/index.js}"></script>
+
+    <script>
+        (function(document, window, $) {
+            'use strict';
+            var Site = window.Site;
+            $(document).ready(function() {
+                Site.run();
+            });
+        })(document, window, jQuery);
+    </script>
+
+    <th:block layout:fragment="scripts"></th:block>
+</body>
+</html>

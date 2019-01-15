@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/base.html" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <th:block layout:fragment="styles">
+        <!-- TODO: temporary style, when we integrate LESS into this move this to a separate file -->
+        <style>
+            .site-menubar-fold .navbar-brand {
+                padding: 22px 20px;
+            }
+
+            .site-menubar-unfold .navbar-brand {
+                padding: 22px 50px;
+            }
+
+            .site-menubar-fold .navbar-brand .navbar-brand-logo:first-child {
+                display: none !important;
+            }
+
+            .site-menubar-fold .navbar-brand .navbar-brand-logo:last-child {
+                display: inline-block !important;
+            }
+
+            .site-menubar-unfold .navbar-brand .navbar-brand-logo:first-child {
+                display: inline-block !important;
+            }
+
+            .site-menubar-unfold .navbar-brand .navbar-brand-logo:last-child {
+                display: none !important;
+            }
+
+            .jsgrid-edit-row select {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-right: 30px !important;
+            }
+
+            .jsgrid-no-fulldata-row td {
+                background: #ffd89d !important;
+            }
+
+            .jsgrid-invalid input, .jsgrid-invalid select, .jsgrid-invalid textarea {
+                background: #ffe3e5;
+                border: 1px solid #ff808a;
+            }
+
+            .jsgrid-table > tbody > tr > td {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+    </th:block>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided"
+                    data-toggle="menubar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="hamburger-bar"></span>
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-collapse"
+                    data-toggle="collapse">
+                <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+            </button>
+            <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
+                <a class="navbar-brand-logo hidden"
+                   th:href="@{/}" title="Hirable" style="height: 25px; width: 149px;"><img th:src="@{/assets/images/random.jpg}"/>
+                </a>
+
+                <a class="navbar-brand-logo hidden" th:href="@{/}" title="Hirable" style="height: auto; width: 100%;">
+                    <img th:src="@{/assets/images/random.jpg}"/>
+                </a>
+            </div>
+        </div>
+        <div class="navbar-container container-fluid">
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <!-- Navbar Toolbar -->
+                <ul class="nav navbar-toolbar">
+                    <li class="hidden-float" id="toggleMenubar">
+                        <a data-toggle="menubar" href="#" role="button">
+                            <i class="icon hamburger hamburger-arrow-left">
+                                <span class="sr-only">Toggle menubar</span>
+                                <span class="hamburger-bar"></span>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Navbar Toolbar -->
+
+                <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post"
+                      class="form-inline"></form>
+
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    <li class="dropdown">
+                        <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                           data-animation="scale-up" role="button">
+                              <span class="avatar avatar-online">
+                                <img src="http://placehold.it/50x50"/>
+                                <i></i>
+                              </span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a th:href="@{/login?logout}"
+                                   onclick="document.getElementById('frmlogout').submit(); return false;"
+                                   role="menuitem">
+                                    <i class="icon wb-power" aria-hidden="true"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- End Navbar Toolbar Right -->
+            </div>
+            <!-- End Navbar Collapse -->
+            <!-- Site Navbar Search -->
+            <div class="collapse navbar-search-overlap" id="site-navbar-search">
+                <form role="search">
+                    <div class="form-group">
+                        <div class="input-search">
+                            <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" name="site-search" placeholder="Search..."/>
+                            <button type="button" class="input-search-close icon wb-close"
+                                    data-target="#site-navbar-search"
+                                    data-toggle="collapse" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Site Navbar Search -->
+        </div>
+    </nav>
+    <div class="site-menubar">
+        <div class="site-menubar-body">
+            <div>
+                <div>
+                    <ul class="site-menu">
+                        <li class="site-menu-item has-sub active open">
+                            <a href="javascript:void(0)">
+                                <i class="site-menu-icon wb-file" aria-hidden="true"></i>
+                                <span class="site-menu-title">Menu</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                            <ul class="site-menu-sub">
+                                <li class="site-menu-item" th:classappend="${currentView == 'cards'} ? 'active'">
+                                    <a class="animsition-link" th:href="@{/cvs/}">
+                                        <span class="site-menu-title">List CVs</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page animsition">
+        <div class="page-header">
+            <th:block layout:fragment="page_header"></th:block>
+        </div>
+        <div class="page-content container-fluid">
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
+                <th:block layout:fragment="page_content"></th:block>
+            </div>
+        </div>
+    </div>
+    <!-- End Page -->
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="site-footer-legal">© 2018
+            <a href="http://www.tvg.com/">Hirable</a>
+        </div>
+    </footer>
+</th:block>
+</body>
+</html>

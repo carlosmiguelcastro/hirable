@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/base">
+<head>
+    <th:block layout:fragmet="styles">
+        <style>
+            .site-menubar-fold .navbar-brand {
+                padding: 22px 20px;
+            }
+
+            .site-menubar-unfold .navbar-brand {
+                padding: 22px 50px;
+            }
+
+            .site-menubar-fold .navbar-brand .navbar-brand-logo:first-child {
+                display: none !important;
+            }
+
+            .site-menubar-fold .navbar-brand .navbar-brand-logo:last-child {
+                display: inline-block !important;
+            }
+
+            .site-menubar-unfold .navbar-brand .navbar-brand-logo:first-child {
+                display: inline-block !important;
+            }
+
+            .site-menubar-unfold .navbar-brand .navbar-brand-logo:last-child {
+                display: none !important;
+            }
+
+            .jsgrid-edit-row select {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-right: 30px !important;
+            }
+
+            .jsgrid-no-fulldata-row td {
+                background: #ffd89d !important;
+            }
+
+            .jsgrid-invalid input, .jsgrid-invalid select, .jsgrid-invalid textarea {
+                background: #ffe3e5;
+                border: 1px solid #ff808a;
+            }
+
+            .jsgrid-table > tbody > tr > td {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+    </th:block>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+        <!--<div class="navbar-header">-->
+        <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
+            <img class="navbar-brand-logo" th:src="@{/assets/images/tvg-logo-hor-white.svg}"
+                 title="TVG" style="height: 25px; width: 149px;"/>
+        </div>
+        <!--</div>-->
+        <div class="navbar-container container-fluid" style="background-color: #163c65">
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post"
+                      class="form-inline"></form>
+
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    <li class="dropdown">
+                        <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                           data-animation="scale-up" role="button">
+                              <span class="avatar avatar-online">
+                                <img src="http://placehold.it/50x50"/>
+                                <i></i>
+                              </span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a th:href="@{/login?logout}"
+                                   onclick="document.getElementById('frmlogout').submit(); return false;"
+                                   role="menuitem">
+                                    <i class="icon wb-power" aria-hidden="true"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- End Navbar Toolbar Right -->
+            </div>
+            <!-- End Navbar Collapse -->
+        </div>
+    </nav>
+    <!-- Page -->
+    <div class="page animsition">
+        <div class="page-header">
+            <th:block layout:fragment="page_header"></th:block>
+        </div>
+        <div class="page-content container-fluid">
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
+                <th:block layout:fragment="page_content"></th:block>
+            </div>
+        </div>
+    </div>
+    <!-- End Page -->
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="site-footer-legal">© 2019
+            <a href="http://www.tvg.com/">Hirable</a>
+        </div>
+    </footer>
+</th:block>
+</body>
+</html>
